@@ -1,0 +1,26 @@
+def count_words(text: str) -> int:
+    words = text.split()
+    return len(words)
+
+def lowercase(text: str) -> dict[str, int]:
+    character_counts = {}
+    for char in text: 
+        lowered = char.lower()
+        if lowered in character_counts:
+            character_counts[lowered] += 1
+        else:
+            character_counts[lowered] = 1
+    return character_counts
+
+def sort_on(char_count: tuple[str, int]) -> int:
+    return char_count[1]
+
+def chars_dict_to_sorted_list(num_chars_dict: dict[str, int]) -> list[tuple[str, int]]:
+    chars_list: list[tuple[str, int]] = []
+    for char in num_chars_dict:
+        count = num_chars_dict[char]
+        chars_list.append((char, count))
+    return sorted(chars_list, reverse=True, key=sort_on)
+
+
+        
